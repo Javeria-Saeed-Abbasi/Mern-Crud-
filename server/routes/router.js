@@ -8,13 +8,12 @@ const users = require("../models/userSchema");
 // });
 
 router.post("/register", async(req,res)=>{
-   console.log(req);
-//    const {name,email,age,mobile,work,add,desc} = req.body;
+   const {name,email,age,mobile,work,add,desc} = req.body;
 
-//    if(!name || !email || !age || !mobile || !work || !add || !desc){
-    // console.log(name,email,age,mobile,work,add,desc);
-//     res.status(422).json("please fill the data");
-//    }
+   if(!name || !email || !age || !mobile || !work || !add || !desc){
+    console.log(name,email,age,mobile,work,add,desc);
+    res.status(422).json("please fill the data");
+   }
    try{
     const preuser = await users.findOne({email:email});
     console.log(preuser);

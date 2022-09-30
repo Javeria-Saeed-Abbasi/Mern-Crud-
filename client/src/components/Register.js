@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -45,33 +46,45 @@ e.preventDefault();
 
 const { name,email,age,mobile,work,add,desc} = inpVal;
 console.log(inpVal)
-    const res = await fetch("/register",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-            body:JSON.stringify({
-              name,email,age,mobile,work,add,desc
-      })
+axios.post('/register', {
+  name,email,age,mobile,work,add,desc
+},
+{headers:{
+      "Content-Type":"application/json"
+    }} )
+.then(function (response) {
+  console.log(response);
+})
+.catch(function (error) {
+  console.log(error);
+});
+    // const res = await fetch("/register",{
+    //   method:"POST",
+    //   headers:{
+    //     "Content-Type":"application/json"
+    //   },
+    //         body:JSON.stringify({
+    //           name,email,age,mobile,work,add,desc
+    //   })
 
-    }).then(async(res)=>{
-      console.log(res)
-      const data = await res.json(
-      );
-      console.log(data);
+    // }).then(async(res)=>{
+    //   console.log(res)
+    //   const data = await res.json(
+    //   );
+    //   console.log(data);
   
-      if(res.status === 404 || !data) 
-      {
-        alert("error")
-        console.log("error");
-      }
-      else{
-        alert("data Added");
-        console.log("data Added");
-      }
-    }).catch((err)=> {
-      console.log(err)
-    });
+    //   if(res.status === 404 || !data) 
+    //   {
+    //     alert("error")
+    //     console.log("error");
+    //   }
+    //   else{
+    //     alert("data Added");
+    //     console.log("data Added");
+    //   }
+    // }).catch((err)=> {
+    //   console.log(err)
+    // });
 
    
 }

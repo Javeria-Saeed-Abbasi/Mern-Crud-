@@ -5,7 +5,6 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import WorkIcon from '@mui/icons-material/Work';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationIcon from '@mui/icons-material/LocationOn';
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useParams } from 'react-router-dom';
@@ -54,7 +53,7 @@ const res2 =await fetch (`/deleteuser/${id}`,{
 const deletedata = await res2.json();
 console.log(deletedata);
 
-if(res2.status == 422 || !deletedata){
+if(res2.status === 422 || !deletedata){
   console.log("error");
 }  
 else{
